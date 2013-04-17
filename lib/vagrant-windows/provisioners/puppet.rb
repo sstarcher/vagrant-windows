@@ -4,9 +4,9 @@ module Vagrant
     		def run_puppet_client
 		        options = [config.options].flatten
 		        if env[:vm].config.vm.guest == :windows
-		        	options << "--modulepath '#{@module_paths.values.join(';')}'" if !@module_paths.empty?
+		        	options << "--modulepath '#{@module_paths.join(';')}'" if !@module_paths.empty?
 		        else
-		        	options << "--modulepath '#{@module_paths.values.join(':')}'" if !@module_paths.empty?
+		        	options << "--modulepath '#{@module_paths.join(':')}'" if !@module_paths.empty?
 		        end
 		        
 		        options << @manifest_file

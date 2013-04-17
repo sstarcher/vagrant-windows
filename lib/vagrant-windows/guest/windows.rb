@@ -12,7 +12,8 @@ module Vagrant
 
       def change_host_name(name)
         #### on windows, renaming a computer seems to require a reboot
-        vm.channel.execute("wmic computersystem where name=\"%COMPUTERNAME%\" call rename name=\"#{name}\"")
+        #vm.channel.execute("wmic computersystem where name=\"%COMPUTERNAME%\" call rename name=\"#{name}\"")
+        vm.channel.execute("netdom renamecomputer localhost /newname:\"#{name}\" /Force")
       end
 
       # TODO: I am sure that ciphering windows versions will be important at some point
